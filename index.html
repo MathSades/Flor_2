@@ -2,55 +2,48 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Tulipas Animadas</title>
+  <title>Rosa Viva</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="not-loaded">
+<body>
 
-  <div class="night"></div>
+  <!-- CÉU -->
+  <div class="sky">
+    <div class="moon"></div>
+    <div class="stars"></div>
+  </div>
 
-  <div class="scene">
+  <!-- PÓLEN -->
+  <canvas id="pollen"></canvas>
 
-    <!-- TULIPA 1 -->
-    <div class="tulip tulip--1">
-      <div class="petals">
-        <span></span><span></span><span></span>
+  <!-- JARDIM -->
+  <div class="garden">
+
+    <!-- ROSA PRINCIPAL -->
+    <div class="rose rose--main">
+      <div class="bloom">
+        <span></span><span></span><span></span><span></span><span></span>
       </div>
       <div class="stem"></div>
-      <div class="leaf leaf--left"></div>
-      <div class="leaf leaf--right"></div>
+      <div class="leaf leaf--l"></div>
+      <div class="leaf leaf--r"></div>
     </div>
 
-    <!-- TULIPA 2 -->
-    <div class="tulip tulip--2">
-      <div class="petals">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="stem"></div>
-      <div class="leaf leaf--left"></div>
-      <div class="leaf leaf--right"></div>
-    </div>
+    <!-- ROSAS SECUNDÁRIAS -->
+    <div class="rose rose--left"></div>
+    <div class="rose rose--right"></div>
 
-    <!-- TULIPA 3 -->
-    <div class="tulip tulip--3">
-      <div class="petals">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="stem"></div>
-      <div class="leaf leaf--left"></div>
-      <div class="leaf leaf--right"></div>
-    </div>
+    <!-- FLORESTAÇÃO -->
+    <div class="foliage f1"></div>
+    <div class="foliage f2"></div>
+    <div class="foliage f3"></div>
+    <div class="foliage f4"></div>
+    <div class="foliage f5"></div>
 
     <!-- GRAMA -->
-    <div class="grass grass--1"></div>
-    <div class="grass grass--2"></div>
-    <div class="grass grass--3"></div>
-
-    <!-- FOLHAS LONGAS -->
-    <div class="long-leaf long-leaf--1"></div>
-    <div class="long-leaf long-leaf--2"></div>
+    <div class="grass"></div>
 
   </div>
 
