@@ -1,171 +1,165 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --sky1:#0b1026;
+  --sky2:#02030a;
+  --green:#2e8b57;
+  --green-dark:#1f5f3f;
+  --rose:#d7265b;
+  --rose-dark:#7a102f;
 }
 
-:root {
-  --sky-top: #0b1026;
-  --sky-bottom: #02030a;
-  --green: #2e8b57;
-  --green-dark: #1f5f3f;
-  --rose: #c9184a;
-  --rose-dark: #800f2f;
+body{
+  min-height:100vh;
+  background:linear-gradient(var(--sky1),var(--sky2));
+  overflow:hidden;
+  font-family:system-ui,sans-serif;
 }
 
-body {
-  min-height: 100vh;
-  background: linear-gradient(var(--sky-top), var(--sky-bottom));
-  overflow: hidden;
-  font-family: sans-serif;
+/* ===== CÉU ===== */
+.sky{position:fixed;inset:0;z-index:0}
+
+.moon{
+  position:absolute;
+  top:8%;
+  right:10%;
+  width:12vmin;height:12vmin;
+  border-radius:50%;
+  background:radial-gradient(circle,#fff,#ccc);
+  box-shadow:0 0 50px rgba(255,255,255,.4);
 }
 
-/* ================= CÉU ================= */
-.sky {
-  position: fixed;
-  inset: 0;
-}
-
-.moon {
-  position: absolute;
-  top: 10%;
-  right: 15%;
-  width: 10vmin;
-  height: 10vmin;
-  background: radial-gradient(circle, #fff, #ccc);
-  border-radius: 50%;
-  box-shadow: 0 0 40px rgba(255,255,255,0.4);
-}
-
-.stars {
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(2px 2px at 20% 30%, white, transparent),
-    radial-gradient(1.5px 1.5px at 70% 10%, white, transparent),
-    radial-gradient(1px 1px at 40% 80%, white, transparent),
-    radial-gradient(1.2px 1.2px at 90% 60%, white, transparent);
-  animation: twinkle 6s infinite alternate;
-}
-
-@keyframes twinkle {
-  from { opacity: .6; }
-  to { opacity: 1; }
-}
-
-/* ================= JARDIM ================= */
-.garden {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-}
-
-/* ================= ROSA ================= */
-.rose {
-  position: absolute;
-  bottom: 14vmin;
-  animation: wind 6s ease-in-out infinite;
-}
-
-.rose--main {
-  left: 50%;
-  transform: translateX(-50%) scale(1.4);
-}
-
-.bloom {
-  position: relative;
-  width: 12vmin;
-  height: 12vmin;
-  margin: 0 auto;
-}
-
-.bloom span {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top, var(--rose), var(--rose-dark));
-  border-radius: 50%;
-  transform-origin: center;
-  animation: open 3s ease forwards;
-}
-
-.bloom span:nth-child(1) { transform: rotate(0deg); }
-.bloom span:nth-child(2) { transform: rotate(30deg); }
-.bloom span:nth-child(3) { transform: rotate(60deg); }
-.bloom span:nth-child(4) { transform: rotate(90deg); }
-.bloom span:nth-child(5) { transform: rotate(120deg); }
-
-.stem {
-  width: 1.2vmin;
-  height: 32vmin;
-  background: linear-gradient(var(--green), var(--green-dark));
-  margin: 0 auto;
-  border-radius: 1vmin;
-}
-
-.leaf {
-  position: absolute;
-  width: 18vmin;
-  height: 6vmin;
-  background: linear-gradient(var(--green), var(--green-dark));
-  border-radius: 100% 0;
-  bottom: 10vmin;
-}
-
-.leaf--l {
-  left: -14vmin;
-  transform: rotate(-35deg);
-}
-
-.leaf--r {
-  right: -14vmin;
-  transform: rotate(35deg);
-}
-
-/* ================= FLORESTAÇÃO ================= */
-.foliage {
-  position: absolute;
-  bottom: 0;
-  width: 3vmin;
-  height: 45vmin;
-  border-left: 0.6vmin solid var(--green-dark);
-  border-radius: 100%;
-  animation: wind 8s infinite;
-}
-
-.f1 { left: 5%; }
-.f2 { left: 15%; height: 50vmin; }
-.f3 { left: 80%; }
-.f4 { left: 90%; height: 55vmin; }
-.f5 { left: 60%; }
-
-/* ================= GRAMA ================= */
-.grass {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 14vmin;
+.stars{
+  position:absolute;inset:0;
   background:
-    repeating-linear-gradient(
-      90deg,
-      var(--green-dark) 0 2px,
-      var(--green) 2px 4px
-    );
+    radial-gradient(1px 1px at 20% 30%,#fff,transparent),
+    radial-gradient(1px 1px at 70% 10%,#fff,transparent),
+    radial-gradient(1px 1px at 40% 80%,#fff,transparent);
+  animation:twinkle 6s infinite alternate;
 }
 
-/* ================= ANIMAÇÕES ================= */
-@keyframes wind {
-  0%,100% { transform: translateX(-50%) rotate(-2deg); }
-  50% { transform: translateX(-50%) rotate(2deg); }
+@keyframes twinkle{from{opacity:.5}to{opacity:1}}
+
+/* ===== NUVENS ===== */
+.cloud{
+  position:absolute;
+  top:15%;
+  width:30vmin;height:10vmin;
+  background:rgba(255,255,255,.05);
+  border-radius:50%;
+  filter:blur(2px);
+  animation:cloudMove 90s linear infinite;
+}
+.cloud--2{top:25%;animation-duration:120s}
+.cloud--3{top:35%;animation-duration:150s}
+
+@keyframes cloudMove{
+  from{left:-40vmin}
+  to{left:110%}
 }
 
-@keyframes open {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+/* ===== CANVAS ===== */
+#pollen{
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:2;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 600px) {
-  .garden {
-    transform: scale(0.85);
-  }
+/* ===== JARDIM ===== */
+.garden{
+  position:relative;
+  width:100%;
+  height:100vh;
+  z-index:3;
+}
+
+/* ===== ROSA ===== */
+.rose{
+  position:absolute;
+  bottom:14vmin;
+  animation:wind 7s ease-in-out infinite;
+}
+
+.rose--main{
+  left:50%;
+  transform:translateX(-50%) scale(1.5);
+}
+
+.bloom{
+  position:relative;
+  width:14vmin;height:14vmin;
+  margin:0 auto;
+}
+
+.bloom span{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:radial-gradient(circle at top,var(--rose),var(--rose-dark));
+  transform:scale(0) rotate(var(--r));
+  animation:open 4s ease forwards;
+}
+.bloom span:nth-child(1){--r:0deg}
+.bloom span:nth-child(2){--r:30deg}
+.bloom span:nth-child(3){--r:60deg}
+.bloom span:nth-child(4){--r:90deg}
+.bloom span:nth-child(5){--r:120deg}
+.bloom span:nth-child(6){--r:150deg}
+
+@keyframes open{
+  to{transform:scale(1) rotate(var(--r))}
+}
+
+.stem{
+  width:1.4vmin;height:36vmin;
+  margin:0 auto;
+  background:linear-gradient(var(--green),var(--green-dark));
+  border-radius:1vmin;
+}
+
+.leaf{
+  position:absolute;
+  width:20vmin;height:7vmin;
+  background:linear-gradient(var(--green),var(--green-dark));
+  border-radius:100% 0;
+  bottom:12vmin;
+}
+.leaf--l{left:-16vmin;transform:rotate(-35deg)}
+.leaf--r{right:-16vmin;transform:rotate(35deg)}
+
+/* ===== FLORESTAÇÃO ===== */
+.foliage{
+  position:absolute;
+  bottom:0;
+  width:3vmin;height:55vmin;
+  border-left:.6vmin solid var(--green-dark);
+  border-radius:100%;
+  animation:wind 9s infinite;
+}
+.f1{left:4%} .f2{left:10%}
+.f3{left:18%} .f4{left:26%}
+.f5{left:70%} .f6{left:78%}
+.f7{left:86%} .f8{left:94%}
+
+/* ===== GRAMA ===== */
+.grass{
+  position:absolute;
+  bottom:0;width:100%;height:16vmin;
+  background:repeating-linear-gradient(
+    90deg,
+    var(--green-dark) 0 2px,
+    var(--green) 2px 4px
+  );
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes wind{
+  0%,100%{transform:translateX(-50%) rotate(-2deg)}
+  50%{transform:translateX(-50%) rotate(2deg)}
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  .garden{transform:scale(.8)}
+  .foliage{height:40vmin}
 }
