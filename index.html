@@ -9,55 +9,41 @@
 <body>
 
 <div class="container">
-  <svg viewBox="0 0 800 600" class="main-svg">
+<svg
+  viewBox="0 0 800 600"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  class="main-svg">
 
-    <defs>
-      <linearGradient id="gradient-black-white">
-        <stop stop-color="black" offset="0"/>
-        <stop stop-color="white" offset="100%"/>
-      </linearGradient>
+  <defs>
+    <linearGradient id="gradient-black-white" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="black"/>
+      <stop offset="100%" stop-color="white"/>
+    </linearGradient>
 
-      <mask id="petal-mask" maskUnits="objectBoundingBox">
-        <rect width="1" height="1" fill="url(#gradient-black-white)"/>
-      </mask>
+    <mask id="petal-mask" maskUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="120" height="400" fill="url(#gradient-black-white)"/>
+    </mask>
 
-      <symbol id="petal-shape">
-        <path d="
-          M60,400
-          C60,400 120,298 120,200
-          C120,90 60,0 60,0
-          C60,0 0,90 0,200
-          C0,310 60,400 60,400 Z"
-        />
-      </symbol>
-    </defs>
+    <symbol id="petal-shape" viewBox="0 0 120 400">
+      <path d="
+        M60 400
+        C60 400 120 300 120 200
+        C120 90 60 0 60 0
+        C60 0 0 90 0 200
+        C0 310 60 400 60 400 Z"
+        class="petal-shape"/>
+    </symbol>
+  </defs>
 
-    <svg viewBox="0 10 120 800">
-      <g class="petals-group">
-
-        <!-- 15 pétalas -->
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-        <g class="petal-group"><use href="#petal-shape"/></g>
-
-      </g>
-    </svg>
-
-  </svg>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+  <g class="petals-group" transform="translate(340 100)">
+    <!-- 15 pétalas -->
+    <g class="petal-group"><use xlink:href="#petal-shape"/></g>
+    <g class="petal-group"><use xlink:href="#petal-shape"/></g>
+    <g class="petal-group"><use xlink:href="#petal-shape"/></g>
+    <g class="petal-group"><use xlink:href="#petal-shape"/></g>
+    <g class="petal-group"><use xlink:href="#petal-shape"/></g>
+    <g class="petal-group"><use xlink:href="#petal-shape"/></g>
+    <g class="petal-group"><use xlink:href="#petal-shape"/></g>
+    <g class="petal-group"><use xlink:href="#petal-shape"/></g>
+    <g class="petal-group"><use xlink:href="#p
