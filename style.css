@@ -1,85 +1,136 @@
-*,
-*::after,
-*::before {
-  padding: 0;
+* {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 :root {
-  --dark-color: #000;
+  --bg: #050505;
+  --green: #1fa56c;
+  --green-dark: #137d52;
+  --pink: #ff4f8b;
 }
 
 body {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
   min-height: 100vh;
-  background-color: var(--dark-color);
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   overflow: hidden;
-  perspective: 1000px;
 }
 
 .night {
   position: fixed;
   inset: 0;
-  filter: blur(0.1vmin);
-  background-image:
-    radial-gradient(ellipse at top, transparent 0%, var(--dark-color)),
-    radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)),
-    linear-gradient(90deg, #00fffa, #f0f0f0);
+  background: radial-gradient(circle at top, #222, #000);
 }
 
-.flowers {
+.scene {
   position: relative;
-  transform: scale(0.7);
+  width: 100%;
+  max-width: 600px;
+  height: 100vh;
 }
 
-.flower {
+/* ================= TULIPA ================= */
+.tulip {
   position: absolute;
-  bottom: 10vmin;
-  transform-origin: bottom center;
-  z-index: 10;
-  --fl-speed: 0.8s;
+  bottom: 20vmin;
+  animation: sway 5s ease-in-out infinite;
 }
 
-.flower__leafs {
+.tulip--1 { left: 35%; }
+.tulip--2 { left: 50%; transform: scale(0.85); }
+.tulip--3 { left: 65%; transform: scale(0.9); }
+
+.petals {
   position: relative;
-  animation: blooming-flower 2s backwards;
+  width: 6vmin;
+  height: 8vmin;
 }
 
-.flower__leaf {
+.petals span {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  width: 8vmin;
-  height: 11vmin;
-  border-radius: 50%;
-  background-image: linear-gradient(to top, #40bbab, #a7ffee);
-  transform-origin: bottom center;
+  width: 4vmin;
+  height: 8vmin;
+  background: linear-gradient(#ff79a8, var(--pink));
+  border-radius: 0 0 4vmin 4vmin;
 }
 
-.flower__line {
-  height: 55vmin;
-  width: 1.5vmin;
-  background-image: linear-gradient(to top, #14757a, #39c6d6);
-  animation: grow-flower-tree 4s backwards;
+.petals span:nth-child(1) { left: 0; transform: rotate(-8deg); }
+.petals span:nth-child(2) { left: 1vmin; z-index: 2; }
+.petals span:nth-child(3) { left: 2vmin; transform: rotate(8deg); }
+
+.stem {
+  width: 1vmin;
+  height: 20vmin;
+  background: linear-gradient(var(--green), var(--green-dark));
+  margin: 0 auto;
 }
 
-.not-loaded * {
-  animation-play-state: paused !important;
+.leaf {
+  position: absolute;
+  width: 10vmin;
+  height: 4vmin;
+  background: linear-gradient(var(--green), var(--green-dark));
+  border-radius: 100% 0;
+  bottom: 6vmin;
 }
 
-/* ===== ANIMAÇÕES ===== */
-
-@keyframes blooming-flower {
-  0% {
-    transform: scale(0);
-  }
+.leaf--left {
+  left: -8vmin;
+  transform: rotate(-30deg);
 }
 
-@keyframes grow-flower-tree {
-  0% {
-    height: 0;
+.leaf--right {
+  right: -8vmin;
+  transform: rotate(30deg);
+}
+
+/* ================= GRAMA ================= */
+.grass {
+  position: absolute;
+  bottom: 0;
+  width: 1vmin;
+  height: 15vmin;
+  background: linear-gradient(var(--green-dark), transparent);
+  animation: grass 3s infinite alternate;
+}
+
+.grass--1 { left: 30%; }
+.grass--2 { left: 50%; height: 18vmin; }
+.grass--3 { left: 70%; }
+
+/* ================= FOLHAS LONGAS ================= */
+.long-leaf {
+  position: absolute;
+  bottom: 0;
+  width: 3vmin;
+  height: 35vmin;
+  border-left: 0.6vmin solid var(--green);
+  border-radius: 100%;
+  animation: sway 6s infinite;
+}
+
+.long-leaf--1 { left: 20%; }
+.long-leaf--2 { left: 80%; }
+
+/* ================= ANIMAÇÕES ================= */
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes grass {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(5deg); }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+  .scene {
+    transform: scale(0.85);
   }
 }
